@@ -1,0 +1,10 @@
+target
+.scannerwork/
+target/.history
+logs
+project/target
+tmp
+dist
+.g8
+.cache
+.idea
