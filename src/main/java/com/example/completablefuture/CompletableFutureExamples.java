@@ -26,6 +26,9 @@ public class CompletableFutureExamples {
   //Running a Simple Asynchronous Stage
   //By default (when no Executor is specified), asynchronous execution uses the common ForkJoinPool implementation, which uses daemon threads to execute the
   // Runnable task. Note that this is specific to CompletableFuture. Other CompletionStage implementations can override the default behavior.
+  //runAsync takes Runnable as input parameter and returns CompletableFuture<Void>, which means it does not return any result.
+  //suppyAsync takes Supplier as argument and returns the CompletableFuture<U> with result value, which means it does not take any input parameters 
+  //but it returns result as output.
   static void runAsyncExample(){
     CompletableFuture<Void> cf = CompletableFuture.runAsync(() -> {
       assertTrue(Thread.currentThread().isDaemon());
@@ -108,7 +111,8 @@ public class CompletableFutureExamples {
   //Asynchronously Applying a BiFunction on Results of Both Stages
   //Similar to the previous example, but with a different behavior: since the two stages upon which CompletableFuture
   // depends both run asynchronously, the thenCombine() method executes asynchronously, even though it lacks the
-  // Async suffix. This is documented in the class Javadocs: “Actions supplied for dependent completions of non-async
+  // Async suffix. This is documented in the class Javadocs: “Actions 
+  ied for dependent completions of non-async
   // methods may be performed by the thread that completes the current CompletableFuture, or by any other caller of a
   // completion method.” Therefore, we need to join() on the combining CompletableFuture to wait for the result.
   static void thenCombineAsyncExample() {
